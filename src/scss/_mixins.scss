@@ -1,0 +1,114 @@
+@use "sass:math";
+
+@mixin bp-up($media) {
+    @each $name, $width in $breakpoints {
+        @if $name == $media {
+            @media only screen and (min-width: #{$width}) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin make-col-class($size, $breakpoint: '', $align: '') {
+    @if $breakpoint == '' {
+        .col_#{$size} {
+            @include make-col-size($size);
+        }
+    } @else {
+        .col_#{$breakpoint}_#{$size} {
+            @include make-col-size($size);
+        }
+
+        .col_#{$breakpoint}_a_l {
+            justify-content: flex-start;
+        }
+
+        .col_#{$breakpoint}_a_c {
+            justify-content: center;
+        }
+
+        .col_#{$breakpoint}_a_r {
+            justify-content: flex-end;
+        }
+
+        .col_#{$breakpoint}_va_t {
+            align-items: flex-start;
+        }
+
+        .col_#{$breakpoint}_va_c {
+            align-items: center;
+        }
+
+        .col_#{$breakpoint}_va_b {
+            align-items: flex-end;
+        }
+
+        //.col_#{$breakpoint}_ta_l {
+        //    text-align: left;
+        //}
+        //
+        //.col_#{$breakpoint}_ta_c {
+        //    text-align: center;
+        //}
+        //
+        //.col_#{$breakpoint}_ta_r {
+        //    text-align: right;
+        //}
+
+        .col_#{$breakpoint}_d_r {
+            flex-direction: row;
+        }
+
+        .col_#{$breakpoint}_d_c {
+            flex-direction: column;
+        }
+    }
+}
+
+@mixin make-col($size: 12) {
+    display: flex;
+    min-width: 0;
+    box-sizing: border-box;
+
+    @if $size != 12 {
+        $gaps: math.div($cols, $size) - 1;
+        $minus: 2 *  math.div($gutter * $gaps, math.div($cols, $size));
+
+        $width: percentage(math.div($size, $cols));
+
+        flex: 0 0 calc(#{$width} - #{$minus});
+        max-width: calc(#{$width} - #{$minus});
+    } @else {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@mixin make-col-size($size) {
+    $gaps: math.div($cols, $size) - 1;
+    $minus: 2 *  math.div($gutter * $gaps, math.div($cols, $size));
+
+    $width: percentage(math.div($size, $cols));
+
+    flex: 0 0 calc(#{$width} - #{$minus});
+    max-width: calc(#{$width} - #{$minus});
+}
+
+@mixin make-container() {
+    width: 100%;
+    padding-right: $gutter;
+    padding-left: $gutter;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: $containerWidth;
+    box-sizing: border-box;
+}
+
+@mixin make-grid() {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2 * $gutter;
+    box-sizing: border-box;
+}
+

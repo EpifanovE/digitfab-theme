@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "1200px"
+    },
+    "spacing": {
+      "blockGap": true,
+      "margin": true,
+      "padding": true,
+      "spacingScale": {
+        "steps": 0
+      },
+      "spacingSizes": [
+        {
+          "size": "8px",
+          "slug": "8",
+          "name": "1"
+        },
+        {
+          "size": "16px",
+          "slug": "16",
+          "name": "2"
+        },
+        {
+          "size": "24px",
+          "slug": "24",
+          "name": "3"
+        },
+        {
+          "size": "32px",
+          "slug": "32",
+          "name": "4"
+        },
+        {
+          "size": "48px",
+          "slug": "48",
+          "name": "5"
+        },
+        {
+          "size": "64px",
+          "slug": "64",
+          "name": "6"
+        },
+        {
+          "size": "80px",
+          "slug": "80",
+          "name": "7"
+        },
+        {
+          "size": "96px",
+          "slug": "96",
+          "name": "8"
+        }
+      ]
+    }
+  },
+  "templateParts": [
+    {
+      "area": "header",
+      "name": "header",
+      "title": "Шапка"
+    },
+    {
+      "area": "header",
+      "name": "header-inner",
+      "title": "Шапка страницы"
+    },
+    {
+      "area": "footer",
+      "name": "footer",
+      "title": "Подвал"
+    }
+  ]
+}
